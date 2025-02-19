@@ -21,27 +21,10 @@ import (
 	ctrl "sigs.k8s.io/controller-runtime"
 
 	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/address"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/flowlog"
 	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/instance"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/internetgateway"
 	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/launchtemplate"
 	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/launchtemplateversion"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/natgateway"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/route"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/routetable"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/securitygroup"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/securitygrouprule"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/subnet"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/transitgateway"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/transitgatewayroute"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/transitgatewayroutetable"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/transitgatewayvpcattachment"
 	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/volume"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/vpc"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/vpccidrblock"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/vpcendpoint"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/vpcendpointserviceconfiguration"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/vpcpeeringconnection"
 	"github.com/crossplane-contrib/provider-aws/pkg/utils/setup"
 )
 
@@ -50,26 +33,9 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 	return setup.SetupControllers(
 		mgr, o,
 		address.SetupAddress,
-		flowlog.SetupFlowLog,
 		instance.SetupInstance,
-		internetgateway.SetupInternetGateway,
 		launchtemplate.SetupLaunchTemplate,
 		launchtemplateversion.SetupLaunchTemplateVersion,
-		natgateway.SetupNatGateway,
-		route.SetupRoute,
-		routetable.SetupRouteTable,
-		securitygroup.SetupSecurityGroup,
-		securitygrouprule.SetupSecurityGroupRule,
-		subnet.SetupSubnet,
-		transitgateway.SetupTransitGateway,
-		transitgatewayroute.SetupTransitGatewayRoute,
-		transitgatewayroutetable.SetupTransitGatewayRouteTable,
-		transitgatewayvpcattachment.SetupTransitGatewayVPCAttachment,
 		volume.SetupVolume,
-		vpc.SetupVPC,
-		vpccidrblock.SetupVPCCIDRBlock,
-		vpcendpoint.SetupVPCEndpoint,
-		vpcendpointserviceconfiguration.SetupVPCEndpointServiceConfiguration,
-		vpcpeeringconnection.SetupVPCPeeringConnection,
 	)
 }

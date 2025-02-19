@@ -14,46 +14,38 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-package ec2
+package vpc
 
 import (
 	"github.com/crossplane/crossplane-runtime/pkg/controller"
 	ctrl "sigs.k8s.io/controller-runtime"
 
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/address"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/flowlog"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/instance"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/internetgateway"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/launchtemplate"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/launchtemplateversion"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/natgateway"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/route"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/routetable"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/securitygroup"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/securitygrouprule"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/subnet"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/transitgateway"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/transitgatewayroute"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/transitgatewayroutetable"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/transitgatewayvpcattachment"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/vpc"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/vpccidrblock"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/vpcendpoint"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/vpcendpointserviceconfiguration"
-	"github.com/crossplane-contrib/provider-aws/pkg/controller/ec2/vpcpeeringconnection"
+	"github.com/crossplane-contrib/provider-aws/pkg/controller/vpc/flowlog"
+	"github.com/crossplane-contrib/provider-aws/pkg/controller/vpc/internetgateway"
+	"github.com/crossplane-contrib/provider-aws/pkg/controller/vpc/natgateway"
+	"github.com/crossplane-contrib/provider-aws/pkg/controller/vpc/route"
+	"github.com/crossplane-contrib/provider-aws/pkg/controller/vpc/routetable"
+	"github.com/crossplane-contrib/provider-aws/pkg/controller/vpc/securitygroup"
+	"github.com/crossplane-contrib/provider-aws/pkg/controller/vpc/securitygrouprule"
+	"github.com/crossplane-contrib/provider-aws/pkg/controller/vpc/subnet"
+	"github.com/crossplane-contrib/provider-aws/pkg/controller/vpc/transitgateway"
+	"github.com/crossplane-contrib/provider-aws/pkg/controller/vpc/transitgatewayroute"
+	"github.com/crossplane-contrib/provider-aws/pkg/controller/vpc/transitgatewayroutetable"
+	"github.com/crossplane-contrib/provider-aws/pkg/controller/vpc/transitgatewayvpcattachment"
+	"github.com/crossplane-contrib/provider-aws/pkg/controller/vpc/vpc"
+	"github.com/crossplane-contrib/provider-aws/pkg/controller/vpc/vpccidrblock"
+	"github.com/crossplane-contrib/provider-aws/pkg/controller/vpc/vpcendpoint"
+	"github.com/crossplane-contrib/provider-aws/pkg/controller/vpc/vpcendpointserviceconfiguration"
+	"github.com/crossplane-contrib/provider-aws/pkg/controller/vpc/vpcpeeringconnection"
 	"github.com/crossplane-contrib/provider-aws/pkg/utils/setup"
 )
 
-// Setup ec2 controllers.
+// Setup vpc controllers.
 func Setup(mgr ctrl.Manager, o controller.Options) error {
 	return setup.SetupControllers(
 		mgr, o,
-		address.SetupAddress,
 		flowlog.SetupFlowLog,
-		instance.SetupInstance,
 		internetgateway.SetupInternetGateway,
-		launchtemplate.SetupLaunchTemplate,
-		launchtemplateversion.SetupLaunchTemplateVersion,
 		natgateway.SetupNatGateway,
 		route.SetupRoute,
 		routetable.SetupRouteTable,
@@ -64,7 +56,6 @@ func Setup(mgr ctrl.Manager, o controller.Options) error {
 		transitgatewayroute.SetupTransitGatewayRoute,
 		transitgatewayroutetable.SetupTransitGatewayRouteTable,
 		transitgatewayvpcattachment.SetupTransitGatewayVPCAttachment,
-		volume.SetupVolume,
 		vpc.SetupVPC,
 		vpccidrblock.SetupVPCCIDRBlock,
 		vpcendpoint.SetupVPCEndpoint,
